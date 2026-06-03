@@ -3,8 +3,6 @@ from datetime import datetime, timedelta, time
 import pytz
 
 st.title("⏰ Critical Date & Wire Deadline Alerts")
-st.subheader("Multi-Timezone Escrow Milestones & Bank Funding Priority Queues")
-st.markdown("---")
 
 # 1. Timezone & Bank Cutoff Controls
 st.sidebar.header("⚙️ Wire Deadline Settings")
