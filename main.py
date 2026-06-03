@@ -1,6 +1,6 @@
 import streamlit as st
 
-# 1. Page Configuration (Must be handled at the entry point router)
+# Page Configuration (Must be handled at the very top)
 st.set_page_config(
     page_title="Kensington Vanguard Escrow Suite",
     page_icon="🏢",
@@ -8,18 +8,19 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# 2. Centralized Master Multi-Page Navigation Structure
-pg = st.navigation({
-    "Escrow Hub": [
-        st.Page("pages/0_Main.py", title="Main", icon="🏢"),
-    ],
-    "Operational Tools": [
-        st.Page("pages/1_Document_Tracker.py", title="Document Tracker", icon="🔍"),
-        st.Page("pages/2_Closing_Calc.py", title="Closing Calc", icon="🧮"),
-        st.Page("pages/3_Deadline_Alerts.py", title="Deadline Alerts", icon="⏰"),
-        st.Page("pages/4_Entity_Verifier.py", title="Entity Verifier", icon="📋"),
-    ]
-})
+# Main Welcome Dashboard UI Content
+st.title("🏢 Commercial Escrow Operations Suite")
+st.subheader("Proof of Concept Workflow Productivity Tools")
+st.markdown("---")
 
-# 3. Execute and Render the Active Page Layout
-pg.run()
+st.markdown("""
+### Welcome to your Digital Escrow Assistant
+Select a tool from the sidebar navigation to streamline your daily commercial closing pipeline:
+
+*   **🔍 Document Tracker:** Scan PDF files to automatically verify required title documents and look for expiration dates.
+*   **🧮 Closing Calculator:** Simulate closing dates, calculate interest prorations, and audit debit/credit balances.
+*   **⏰ Deadline Alerts:** View a daily countdown of wire cutoff times and critical contract milestones.
+*   **📋 Entity Verifier:** Map out complex corporate signing structures and cross-reference authorization documents.
+""")
+
+st.info("💡 **Tip:** Use the sidebar menu on the left to seamlessly jump between different active transaction tasks.")
