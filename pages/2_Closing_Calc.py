@@ -20,13 +20,16 @@ with st.form("calculator_inputs"):
     col_a, col_b = st.columns(2)
     
     with col_a:
-        purchase_price = st.number_input("Purchase Price ($)", min_value=0.0, value=5000000.0, step=10000.0, format="%.2f")
-        earnest_money = st.number_input("Earnest Money Deposit ($)", min_value=0.0, value=250000.0, step=5000.0, format="%.2f")
-        new_loan_amount = st.number_input("New Lender Loan Amount ($)", min_value=0.0, value=3500000.0, step=10000.0, format="%.2f")
-        
+        # Streamlit automatically adds commas to large numbers when the value is clear
+        purchase_price = st.number_input("Purchase Price ($)", min_value=0.0, value=5000000.0, step=10000.0)
+        earnest_money = st.number_input("Earnest Money Deposit ($)", min_value=0.0, value=250000.0, step=5000.0)
+        new_loan_amount = st.number_input("New Lender Loan Amount ($)", min_value=0.0, value=3500000.0, step=10000.0)
+
     with col_b:
         closing_date = st.date_input("Target Closing Date", datetime.today() + timedelta(days=14))
-        annual_tax_bill = st.number_input("Annual Property Tax ($)", min_value=0.0, value=24000.0, step=100.0, format="%.2f")
+        # Updated: Removed format="%.2f" to allow standard comma thousands separators
+        annual_tax_bill = st.number_input("Annual Property Tax ($)", min_value=0.0, value=24000.0, step=100.0)
+        # Kept: Explicit precision format for interest rate inputs
         daily_interest_rate = st.number_input("Lender Per Diem Interest Rate (%)", min_value=0.0, max_value=100.0, value=6.5, step=0.1, format="%.3f")
         days_of_interest = st.number_input("Days of Prepaid Interest to Collect", min_value=0, max_value=31, value=15)
 
@@ -34,31 +37,39 @@ with st.form("calculator_inputs"):
     st.subheader("🛡️ Title, Escrow & Recording Fees")
     col_c, col_d = st.columns(2)
     
-    with col_c:
-        title_premium = st.number_input("Title Insurance Premium ($)", min_value=0.0, value=12500.0, step=500.0, format="%.2f")
+   with col_c:
+        # Updated: Removed format parameter for comma formatting
+        title_premium = st.number_input("Title Insurance Premium ($)", min_value=0.0, value=12500.0, step=500.0)
         title_premium_payer = st.selectbox("Who pays Title Premium?", ["Split 50/50", "Buyer Pays Entirely", "Seller Pays Entirely"])
         
-        escrow_fee = st.number_input("Kensington Vanguard Settlement/Escrow Fee ($)", min_value=0.0, value=2500.0, step=250.0, format="%.2f")
+        # Updated: Removed format parameter for comma formatting
+        escrow_fee = st.number_input("Kensington Vanguard Settlement/Escrow Fee ($)", min_value=0.0, value=2500.0, step=250.0)
         escrow_payer = st.selectbox("Who pays Escrow Fee?", ["Split 50/50", "Buyer Pays Entirely", "Seller Pays Entirely"])
 
     with col_d:
-        endorsement_fees = st.number_input("Title Endorsement Charges ($)", min_value=0.0, value=1500.0, step=100.0, format="%.2f")
+        # Updated: Removed format parameter for comma formatting
+        endorsement_fees = st.number_input("Title Endorsement Charges ($)", min_value=0.0, value=1500.0, step=100.0)
         endorsement_payer = st.selectbox("Who pays Endorsements?", ["Buyer Pays Entirely", "Seller Pays Entirely", "Split 50/50"])
         
-        recording_fees = st.number_input("Government Recording Fees ($)", min_value=0.0, value=450.0, step=50.0, format="%.2f")
+        # Updated: Removed format parameter for comma formatting
+        recording_fees = st.number_input("Government Recording Fees ($)", min_value=0.0, value=450.0, step=50.0)
         recording_payer = st.selectbox("Who pays Recording Fees?", ["Buyer Pays Entirely", "Seller Pays Entirely", "Split 50/50"])
-
+        
     st.markdown("---")
     st.subheader("📝 Dynamic Miscellaneous Adjustments")
     st.caption("Add one-off line items unique to this commercial transaction (e.g., broker commissions, survey fees, environmental reports).")
     
     col_misc1, col_misc2, col_misc3 = st.columns([2, 1, 1])
-    with col_misc1:
-        misc_desc = st.text_input("Fee Description", placeholder="e.g., Commercial Broker Commission")
-    with col_misc2:
-        misc_amt = st.number_input("Fee Amount ($)", min_value=0.0, value=0.0, step=100.0, format="%.2f")
-    with col_misc3:
-        misc_payer = st.selectbox("Assigned Payer", ["Seller Pays Entirely", "Buyer Pays Entirely"])
+
+with col_misc1:
+    misc_desc = st.text_input("Fee Description", placeholder="e.g., Commercial Broker Commission")
+
+with col_misc2:
+    # Updated: Removed format="%.2f" to allow standard comma thousands separators
+    misc_amt = st.number_input("Fee Amount ($)", min_value=0.0, value=0.0, step=100.0)
+
+with col_misc3:
+    misc_payer = st.selectbox("Assigned Payer", ["Seller Pays Entirely", "Buyer Pays Entirely"])
 
     submit_button = st.form_submit_button(label="🔄 Run Balancing Math & Custom Prorations")
 
