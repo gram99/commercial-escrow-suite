@@ -1,14 +1,6 @@
 import streamlit as st
 from datetime import datetime, timedelta
 
-# 1. Custom Navigation Sidebar
-st.sidebar.page_link("pages/0_Main.py", label="Main", icon="🏢")
-st.sidebar.page_link("pages/1_Document_Tracker.py", label="Document Tracker", icon="🔍")
-st.sidebar.page_link("pages/2_Closing_Calc.py", label="Closing Calc", icon="🧮")
-st.sidebar.page_link("pages/3_Deadline_Alerts.py", label="Deadline Alerts", icon="⏰")
-st.sidebar.page_link("pages/4_Entity_Verifier.py", label="Entity Verifier", icon="📋")
-st.sidebar.markdown("---")
-
 st.title("🧮 Commercial Closing Statement Calculator")
 st.subheader("Proration Logic, Custom Title Fees & Debit/Credit Balancing Ledger")
 st.markdown("---")
