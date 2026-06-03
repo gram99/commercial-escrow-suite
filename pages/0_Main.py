@@ -1,6 +1,6 @@
 import streamlit as st
 
-# Page Configuration (Must be the first command on this sub-page)
+# 1. Page Configuration (Must be the first command on this sub-page)
 st.set_page_config(
     page_title="Kensington Vanguard Escrow Suite",
     page_icon="🏢",
@@ -8,7 +8,16 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Main Welcome Dashboard UI
+# 2. Force a Custom Clean Navigation Menu (Hides the root main.py file)
+st.sidebar.page_link("pages/0_Main.py", label="Main", icon="🏢")
+st.sidebar.page_link("pages/1_Document_Tracker.py", label="Document Tracker", icon="🔍")
+st.sidebar.page_link("pages/2_Closing_Calc.py", label="Closing Calc", icon="🧮")
+st.sidebar.page_link("pages/3_Deadline_Alerts.py", label="Deadline Alerts", icon="⏰")
+st.sidebar.page_link("pages/4_Entity_Verifier.py", label="Entity Verifier", icon="📋")
+
+st.sidebar.markdown("---")
+
+# 3. Main Welcome Dashboard UI Content
 st.title("🏢 Commercial Escrow Operations Suite")
 st.subheader("Proof of Concept Workflow Productivity Tools")
 st.markdown("---")
