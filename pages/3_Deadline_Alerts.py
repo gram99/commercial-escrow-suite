@@ -1,5 +1,5 @@
 import streamlit as st
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, time
 import pytz
 
 st.title("⏰ Critical Date & Wire Deadline Alerts")
@@ -9,7 +9,6 @@ st.markdown("---")
 # 1. Timezone & Bank Cutoff Controls
 st.sidebar.header("⚙️ Wire Deadline Settings")
 
-# Let user choose their active market timezone
 tz_options = {
     "Eastern Time (NY Corp HQ)": "US/Eastern",
     "Central Time (Texas/Midwest)": "US/Central",
@@ -19,7 +18,6 @@ tz_options = {
 selected_tz_label = st.sidebar.selectbox("Your Operating Timezone", list(tz_options.keys()))
 local_tz = pytz.timezone(tz_options[selected_tz_label])
 
-# Standard commercial banking cutoff thresholds (Same-day credit limits)
 bank_cutoffs = {
     "Standard Fedwire (Absolute Limit)": "18:00",
     "Commercial Settlement Bank (Typical)": "16:30",
@@ -38,25 +36,21 @@ else:
 # 2. Wire Cutoff Priority Dashboard
 st.subheader("🚨 Real-Time Wire Deadline Tracking")
 
-# Compute current times across systems
 now_utc = datetime.now(pytz.utc)
 now_local = now_utc.astimezone(local_tz)
 cutoff_time_local = now_local.replace(hour=cutoff_hour, minute=cutoff_min, second=0, microsecond=0)
 
-# Display Current Desk Clock
 col_clock1, col_clock2 = st.columns(2)
 with col_clock1:
     st.metric("🕰️ Your Local Desk Time", now_local.strftime("%I:%M %p (%Z)"))
 with col_clock2:
     st.metric("🎯 Selected Target Deadline", cutoff_time_local.strftime("%I:%M %p (%Z)"))
 
-# Calculate exact time remaining or elapsed for wire processing today
 if now_local < cutoff_time_local:
     time_remaining = cutoff_time_local - now_local
     hours, remainder = divmod(time_remaining.seconds, 3600)
     minutes, _ = divmod(remainder, 60)
     
-    # Render countdown warning banner based on urgency thresholds
     if hours < 1:
         st.error(f"🔴 **CRITICAL WIRE CRUNCH:** Only **{minutes} minutes** remaining before the {selected_bank_cutoff} ({cutoff_time_local.strftime('%I:%M %p')})! Route final funding packets immediately.")
     elif hours < 2:
