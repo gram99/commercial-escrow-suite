@@ -15,8 +15,11 @@ pg = st.navigation({
     ],
     "Operational Tools": [
         st.Page("pages/1_Document_Tracker.py", title="Document Tracker", icon="🔍"),
-        st.Page("pages/2_Closing_Calc.py", title="Closing Calc", icon="🮮"),
+        st.Page("pages/2_Closing_Calc.py", title="Closing Calc", icon="🧮"),
         st.Page("pages/3_Deadline_Alerts.py", title="Deadline Alerts", icon="⏰"),
         st.Page("pages/4_Entity_Verifier.py", title="Entity Verifier", icon="📋"),
     ]
 })
+
+# 3. Execute and Render the Active Page Layout
+pg.run()
