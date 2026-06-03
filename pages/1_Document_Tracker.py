@@ -1,10 +1,7 @@
 import streamlit as st
 import pdfplumber
 
-# # CRITICAL FIX: Removed st.set_page_config because it is already handled in Main.py
 st.title("🔍 'Clean Title' Document Tracker")
-st.subheader("Automated Closing Document Audit & Keyword Scan")
-st.markdown("---")
 
 # Define the Escrow Checklist and target keywords to search for
 REQUIRED_DOCUMENTS = {
