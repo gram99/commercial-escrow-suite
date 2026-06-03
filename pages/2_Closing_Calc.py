@@ -2,8 +2,6 @@ import streamlit as st
 from datetime import datetime, timedelta
 
 st.title("🧮 Commercial Closing Statement Calculator")
-st.subheader("Proration Logic, Custom Title Fees & Debit/Credit Balancing Ledger")
-st.markdown("---")
 
 # 2. Transaction Parameters Input Form
 with st.form("calculator_inputs"):
