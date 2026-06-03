@@ -95,17 +95,13 @@ Ensure you have **Python 3.9+** installed on your system.
 ## 📺 Screenshots
 <img width="1000" height="385" alt="image" src="https://github.com/user-attachments/assets/6895f16b-7a5d-4a11-803a-84d424b70f06" />
 <br>
-<img width="1000" height="438" alt="image" src="https://github.com/user-attachments/assets/3fa17e4e-d2cb-4507-9897-e8927e302bde" />
+<img width="1000" height="477" alt="image" src="https://github.com/user-attachments/assets/5e43e456-c035-442c-b205-3cca94c15122" />
 <br>
 <img width="1000" height="444" alt="image" src="https://github.com/user-attachments/assets/bdd5e419-82b0-492f-8e1e-4dcc62bb6bc8" />
 <br>
-<img width="1000" height="477" alt="image" src="https://github.com/user-attachments/assets/5e43e456-c035-442c-b205-3cca94c15122" />
-<br>
 <img width="1000" height="448" alt="image" src="https://github.com/user-attachments/assets/d7dd8bdc-c45a-431d-b2e0-309e4df9a57e" />
-
-
-
-
+<br>
+<img width="1000" height="438" alt="image" src="https://github.com/user-attachments/assets/3fa17e4e-d2cb-4507-9897-e8927e302bde" />
 
 
 *Disclaimer: This software is provided as an operational Proof of Concept (PoC) tool designed to assist escrow professionals with pipeline data analysis. It should be used alongside primary internal title underwriting platforms.*
