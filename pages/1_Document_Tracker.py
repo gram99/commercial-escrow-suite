@@ -1,14 +1,13 @@
 import streamlit as st
 import pdfplumber
 
-# 1. Page Config
-st.set_page_config(page_title="Document Tracker", page_icon="🔍", layout="wide")
+# CRITICAL FIX: Removed st.set_page_config because it is already handled in main.py
 
 st.title("🔍 'Clean Title' Document Tracker")
 st.subheader("Automated Closing Document Audit & Keyword Scan")
 st.markdown("---")
 
-# 2. Define the Escrow Checklist and target keywords to search for
+# Define the Escrow Checklist and target keywords to search for
 REQUIRED_DOCUMENTS = {
     "Payoff Statement": ["payoff", "good through", "per diem", "wire instructions"],
     "Lien Release / Satisfaction": ["release of lien", "satisfaction of mortgage", "discharge"],
@@ -16,7 +15,7 @@ REQUIRED_DOCUMENTS = {
     "Title Insurance Commitment": ["schedule a", "schedule b", "requirements", "exceptions"]
 }
 
-# 3. Sidebar Configuration for Uploads
+# Sidebar Configuration for Uploads
 st.sidebar.header("📁 Document Upload Center")
 uploaded_files = st.sidebar.file_uploader(
     "Drag and drop closing PDFs here", 
@@ -24,7 +23,7 @@ uploaded_files = st.sidebar.file_uploader(
     accept_multiple_files=True
 )
 
-# 4. Main App Logic
+# Main App Logic
 if not uploaded_files:
     st.info("💡 **How to use:** Upload one or more transaction PDFs in the sidebar to run an automated escrow compliance audit.")
 else:
@@ -43,7 +42,7 @@ else:
             except Exception as e:
                 st.error(f"Error reading {uploaded_file.name}: {e}")
 
-    # 5. UI Columns for Results Display
+    # UI Columns for Results Display
     col1, col2 = st.columns([1, 1])
 
     with col1:
