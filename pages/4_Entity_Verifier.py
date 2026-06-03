@@ -2,8 +2,6 @@ import streamlit as st
 import pandas as pd
 
 st.title("📋 Entity Verification & KYC Assistant")
-st.subheader("Corporate Signing Authority Mapping & Escrow KYC Log")
-st.markdown("---")
 
 st.info(
     "💡 **Escrow Protocol:** Use this module to map out multi-layer entity structures (e.g., a subsidiary LLC managed by a parent Corp) "
