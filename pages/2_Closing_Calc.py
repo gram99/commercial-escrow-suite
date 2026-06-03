@@ -19,13 +19,13 @@ with st.form("calculator_inputs"):
     col_a, col_b = st.columns(2)
     
     with col_a:
-        purchase_price = st.number_input("Purchase Price ($)", min_value=0.0, value=5000000.0, step=10000.0)
-        earnest_money = st.number_input("Earnest Money Deposit ($)", min_value=0.0, value=250000.0, step=5000.0)
-        new_loan_amount = st.number_input("New Lender Loan Amount ($)", min_value=0.0, value=3500000.0, step=10000.0)
+        purchase_price = st.number_input("Purchase Price ($)", min_value=0.0, value=5000000.0, step=10000.0, format="%,.2f")
+        earnest_money = st.number_input("Earnest Money Deposit ($)", min_value=0.0, value=250000.0, step=5000.0, format="%,.2f")
+        new_loan_amount = st.number_input("New Lender Loan Amount ($)", min_value=0.0, value=3500000.0, step=10000.0, format="%,.2f")
         
     with col_b:
         closing_date = st.date_input("Target Closing Date", datetime.today() + timedelta(days=14))
-        annual_tax_bill = st.number_input("Annual Property Tax ($)", min_value=0.0, value=24000.0, step=100.0)
+        annual_tax_bill = st.number_input("Annual Property Tax ($)", min_value=0.0, value=24000.0, step=100.0, format="%,.2f")
         daily_interest_rate = st.number_input("Lender Per Diem Interest Rate (%)", min_value=0.0, max_value=100.0, value=6.5, step=0.1, format="%.3f")
         days_of_interest = st.number_input("Days of Prepaid Interest to Collect", min_value=0, max_value=31, value=15)
 
@@ -34,17 +34,17 @@ with st.form("calculator_inputs"):
     col_c, col_d = st.columns(2)
     
     with col_c:
-        title_premium = st.number_input("Title Insurance Premium ($)", min_value=0.0, value=12500.0, step=500.0)
+        title_premium = st.number_input("Title Insurance Premium ($)", min_value=0.0, value=12500.0, step=500.0, format="%,.2f")
         title_premium_payer = st.selectbox("Who pays Title Premium?", ["Split 50/50", "Buyer Pays Entirely", "Seller Pays Entirely"])
         
-        escrow_fee = st.number_input("Kensington Vanguard Settlement/Escrow Fee ($)", min_value=0.0, value=2500.0, step=250.0)
+        escrow_fee = st.number_input("Kensington Vanguard Settlement/Escrow Fee ($)", min_value=0.0, value=2500.0, step=250.0, format="%,.2f")
         escrow_payer = st.selectbox("Who pays Escrow Fee?", ["Split 50/50", "Buyer Pays Entirely", "Seller Pays Entirely"])
 
     with col_d:
-        endorsement_fees = st.number_input("Title Endorsement Charges ($)", min_value=0.0, value=1500.0, step=100.0)
+        endorsement_fees = st.number_input("Title Endorsement Charges ($)", min_value=0.0, value=1500.0, step=100.0, format="%,.2f")
         endorsement_payer = st.selectbox("Who pays Endorsements?", ["Buyer Pays Entirely", "Seller Pays Entirely", "Split 50/50"])
         
-        recording_fees = st.number_input("Government Recording Fees ($)", min_value=0.0, value=450.0, step=50.0)
+        recording_fees = st.number_input("Government Recording Fees ($)", min_value=0.0, value=450.0, step=50.0, format="%,.2f")
         recording_payer = st.selectbox("Who pays Recording Fees?", ["Buyer Pays Entirely", "Seller Pays Entirely", "Split 50/50"])
 
     st.markdown("---")
@@ -55,7 +55,7 @@ with st.form("calculator_inputs"):
     with col_misc1:
         misc_desc = st.text_input("Fee Description", placeholder="e.g., Commercial Broker Commission")
     with col_misc2:
-        misc_amt = st.number_input("Fee Amount ($)", min_value=0.0, value=0.0, step=100.0)
+        misc_amt = st.number_input("Fee Amount ($)", min_value=0.0, value=0.0, step=100.0, format="%,.2f")
     with col_misc3:
         misc_payer = st.selectbox("Assigned Payer", ["Seller Pays Entirely", "Buyer Pays Entirely"])
 
